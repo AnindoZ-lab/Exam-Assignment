@@ -1,0 +1,28 @@
+# --- Core Data Science & ML ---
+pandas
+numpy
+scikit-learn
+matplotlib
+
+# --- MLOps: Data & Pipeline Versioning ---
+dvc
+dvc-s3  #to use AWS S3 for data storage
+
+# --- MLOps: Experiment Tracking & Artifacts ---
+mlflow
+dagshub # Optional: great for hosting MLflow tracking for free
+
+# --- Deployment & API ---
+fastapi
+uvicorn
+python-multipart
+pydantic
+
+# --- Monitoring & Quality ---
+evidently  # For data drift and model performance reports
+pytest     # For unit testing your pipeline
+python-dotenv # For managing environment variables/API keys
+
+# --- Utility ---
+joblib     # For saving/loading model files (.pkl)
+pyyaml     # For reading config files
