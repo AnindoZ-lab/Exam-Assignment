@@ -1,3 +1,17 @@
+stages:
+  ingest:
+    cmd: python src/ingestion.py
+    deps:
+      - src/ingestion.py
+    outs:
+      - data/raw/
+  process:
+    cmd: python src/preprocessing.py
+    deps:
+      - data/raw/
+      - src/preprocessing.py
+    outs:
+      - data/processed/
 name: workflow
 
 on:
