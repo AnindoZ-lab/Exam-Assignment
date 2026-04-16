@@ -26,3 +26,9 @@ python-dotenv # For managing environment variables/API keys
 # --- Utility ---
 joblib     # For saving/loading model files (.pkl)
 pyyaml     # For reading config files
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.2
+scikit-learn==1.3.2
+pandas==2.1.3
+joblib==1.3.2
