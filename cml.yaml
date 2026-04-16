@@ -1,0 +1,37 @@
+name: MLOps-Pipeline-Automation
+on: [push] 
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Train model
+        
+        run: |
+          python src/ingestion.py
+          python src/preprocessing.py
+          python src/train.py
+
+      - name: Write CML Report
+        
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "## Model Metrics" > report.md
+          # We extract the metrics that MLflow or your script saved
+          echo "Your MLOps pipeline has finished running successfully." >> report.md
+          
+          # Optional: If you saved a plot (like a confusion matrix), you can add it here:
+          # echo "![](./models/confusion_matrix.png)" >> report.md
+          
+          cml send-comment report.md
