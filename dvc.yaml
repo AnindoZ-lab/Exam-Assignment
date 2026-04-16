@@ -73,3 +73,13 @@ jobs:
       - name: Clean previous images and containers
         run: |
           docker system prune -f
+          stages:
+  ... (previous stages) ...
+  monitor:
+    cmd: python src/monitoring.py
+    deps:
+      - data/raw/original_data.csv
+      - data/processed/train.csv
+      - src/monitoring.py
+    outs:
+      - reports/drift_report.html
